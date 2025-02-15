@@ -1,0 +1,24 @@
+= API 문서
+Author : 김재진 gimzaezin //
+:snippets: build/generated-snippets
+
+== Create User API
+include::{snippets}/create-user/http-request.adoc[]
+include::{snippets}/create-user/http-response.adoc[]
+include::{snippets}/create-user/request-fields.adoc[]
+include::{snippets}/create-user/response-fields.adoc[]
+
+== Get All Users API
+include::{snippets}/get-all-users/http-request.adoc[]
+include::{snippets}/get-all-users/http-response.adoc[]
+include::{snippets}/get-all-users/response-fields.adoc[]
+
+== Get User By ID API
+include::{snippets}/get-user-by-id/http-request.adoc[]
+include::{snippets}/get-user-by-id/http-response.adoc[]
+include::{snippets}/get-user-by-id/response-fields.adoc[]
+
+== Delete User API
+include::{snippets}/delete-user/http-request.adoc[]
+include::{snippets}/delete-user/http-response.adoc[]
+
