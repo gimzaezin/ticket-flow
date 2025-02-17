@@ -28,10 +28,25 @@ public class DataSourceConfig {
         String url = "jdbc:mysql://" + host + ":" + port + "/" + dbName + "?serverTimezone=UTC";
 
         BasicDataSource dataSource = new BasicDataSource();
+
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl(url);
         dataSource.setUsername(username);
         dataSource.setPassword(password);
+
+        dataSource.setInitialSize(20);
+        dataSource.setMinIdle(20);
+
+        dataSource.setMaxTotal(200);
+        dataSource.setMaxIdle(50);
+
+        dataSource.setMaxWaitMillis(5000);
+
+        dataSource.setValidationQuery("SELECT 1");
+        dataSource.setTestOnBorrow(false);
+        dataSource.setTestWhileIdle(true);
+        dataSource.setTimeBetweenEvictionRunsMillis(30000);
+        dataSource.setMinEvictableIdleTimeMillis(60000);
 
         return dataSource;
     }
