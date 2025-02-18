@@ -1,5 +1,6 @@
 package com.gimzazin.tiketflow.reservation.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.gimzazin.tiketflow.event.entity.Seat;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,6 +31,7 @@ public class ReservationItem {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "reservation_id")
+    @JsonBackReference
     private Reservation reservation;
 
     @ManyToOne(fetch = FetchType.LAZY)

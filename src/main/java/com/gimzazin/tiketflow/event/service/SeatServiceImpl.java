@@ -71,6 +71,6 @@ public class SeatServiceImpl implements SeatService {
         if (newStock == null || newStock < 0) {
             throw new IllegalStateException("예약이 불가능합니다.");
         }
-        return seatId;
+        return 1L;
     }
 }

@@ -22,14 +22,17 @@ public class ReservationController {
     private final ReservationService optimisticService;
     private final ReservationService pessimisticService;
     private final ReservationService redisService;
+    private final ReservationService outboxService;
 
     public ReservationController(
             @Qualifier("reservationServiceOptimistic") ReservationService optimisticService,
             @Qualifier("reservationServicePessimistic") ReservationService pessimisticService,
-            @Qualifier("reservationServiceRedis") ReservationService redisService) {
+            @Qualifier("reservationServiceRedis") ReservationService redisService,
+            @Qualifier("reservationServiceOutbox") ReservationService outboxService) {
         this.optimisticService = optimisticService;
         this.pessimisticService = pessimisticService;
         this.redisService = redisService;
+        this.outboxService = outboxService;
     }
 
     @PostMapping
@@ -43,9 +46,12 @@ public class ReservationController {
             responseDto = pessimisticService.createReservation(requestDto);
         } else if ("optimistic".equalsIgnoreCase(lockType)){
             responseDto = optimisticService.createReservation(requestDto);
-        } else if ("redis".equalsIgnoreCase(lockType)){
+        } else if ("redis".equalsIgnoreCase(lockType)) {
             responseDto = redisService.createReservation(requestDto);
-        } else {
+        } else if ("outbox".equalsIgnoreCase(lockType)) {
+            responseDto = outboxService.createReservation(requestDto);
+        }
+        else {
             return ResponseEntity.ok(null);
         }
         return ResponseEntity.ok(responseDto);
