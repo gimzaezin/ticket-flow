@@ -1,5 +1,6 @@
 package com.gimzazin.tiketflow.reservation.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.gimzazin.tiketflow.users.entity.User;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -51,6 +52,7 @@ public class Reservation {
 
     @Builder.Default
     @OneToMany(mappedBy = "reservation", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<ReservationItem> reservationItems = new ArrayList<>();
 
     public void addReservationItem(ReservationItem item) {
