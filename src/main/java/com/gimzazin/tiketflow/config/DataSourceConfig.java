@@ -37,12 +37,13 @@ public class DataSourceConfig {
         dataSource.setInitialSize(20);
         dataSource.setMinIdle(20);
 
-        dataSource.setMaxTotal(200);
+        dataSource.setMaxTotal(500);
         dataSource.setMaxIdle(50);
 
         dataSource.setMaxWaitMillis(5000);
 
         dataSource.setValidationQuery("SELECT 1");
+        dataSource.setRemoveAbandonedOnBorrow(true);
         dataSource.setTestOnBorrow(false);
         dataSource.setTestWhileIdle(true);
         dataSource.setTimeBetweenEvictionRunsMillis(30000);
