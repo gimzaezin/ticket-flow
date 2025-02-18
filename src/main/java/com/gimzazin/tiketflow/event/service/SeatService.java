@@ -11,4 +11,8 @@ public interface SeatService {
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     Seat reserveSeatPessimistic(Long seatId);
+
+
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    Long reserveSeatRedis(Long seatId);
 }
