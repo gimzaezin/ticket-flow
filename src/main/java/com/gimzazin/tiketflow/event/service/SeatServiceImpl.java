@@ -42,7 +42,7 @@ public class SeatServiceImpl implements SeatService {
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRED)
     public Long reserveSeatRedis(Long seatId) {
         String key = SEAT_STOCK_KEY_PREFIX + seatId;
 
